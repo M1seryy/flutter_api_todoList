@@ -18,19 +18,19 @@ Future<List<todoModel>> fetchTodo() async {
   return transformedListOfTodoes;
 }
 
-Future<http.Response> addNewTodo(bodyData) async {
+Future<http.Response> addNewTodo(todoModel bodyData) async {
+  final newTodo = bodyData;
   final responce = await http.post(
     Uri.parse('https://669eba089a1bda3680076f3f.mockapi.io/todo'),
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
     },
-    body: jsonEncode(<String, String>{
-      'id': "10",
-      "title": "POST_API_DATA",
-      "isDone": "false"
+    body: jsonEncode(<String, dynamic>{
+      'id': newTodo.id,
+      "title": newTodo.title,
+      "isDone": newTodo.isDone,
     }),
   );
-  print('Sended data is: $bodyData');
   return responce;
 }
 

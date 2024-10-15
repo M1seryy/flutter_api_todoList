@@ -39,7 +39,7 @@ class _HomeState extends State<Home> {
 
   void onTodoChnageHandler(todoModel todo) {
     setState(() {
-      todo.isDone = !todo.isDone;
+      // todo.isDone = !todo.isDone;
     });
   }
 
@@ -57,12 +57,9 @@ class _HomeState extends State<Home> {
           id: (intValue).toString(), title: todoTitle, isDone: false));
     });
     _todoController.clear();
-    Map data = {
-      'id': (intValue).toString(),
-      'title': todoTitle,
-      'isDone': 'false',
-    };
-    addNewTodo(data);
+    // Map<String, dynamic> data = {"id": "4", "title": "test4", "isDone": false};
+    addNewTodo(
+        todoModel(id: (intValue).toString(), title: todoTitle, isDone: false));
   }
 
   void _onFilterHandler(String searchWord) {
